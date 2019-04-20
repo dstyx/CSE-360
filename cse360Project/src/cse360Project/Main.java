@@ -8,7 +8,8 @@
 
 
 package cse360Project;
-import java.util.ArrayList;
+import java.util.*;
+import javax.swing.*;
 
 
 public class Main {
@@ -17,8 +18,22 @@ public class Main {
 		
 		ArrayList<Item> toDo = new ArrayList<Item>();
 		
+		SwingUtilities.invokeLater(new Runnable() {
+			public void run() {
+				JFrame frame = new Frame("To-do list");
+				frame.setSize(1200, 600);
+				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				frame.setVisible(true);
+			}
+		});
+		
+
 		// TODO Auto-generated method stub
 
 	}
+	
+
 
 }
+
+
