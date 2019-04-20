@@ -28,10 +28,14 @@ public class Frame extends JFrame {
 		Container c = getContentPane();
 		
 		c.add(textArea, BorderLayout.CENTER);
-		c.add(add,BorderLayout.SOUTH);
+		//c.add(add,BorderLayout.SOUTH);
 		c.add(details,BorderLayout.WEST);
 		
-		
+		details.addDetailListener(new DetailListener() {
+			public void detailEventOccured(DetailEvent event) {
+				
+			}
+		});
 		// Behavior
 		add.addActionListener(new ActionListener() {
 
