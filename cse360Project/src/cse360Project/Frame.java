@@ -2,11 +2,10 @@ package cse360Project;
 
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -18,6 +17,7 @@ public class Frame extends JFrame {
 	private Item holder;
 	private Boolean holding = false;
 	public ArrayList<Item> list = new ArrayList<Item>();
+	
 	
 	
 	public Frame(String title) {
@@ -131,13 +131,31 @@ public class Frame extends JFrame {
 				}
 				
 				
-				else if(event.getFunc() == 'S') {//Save LOGIC HERE
-					
+				else if(event.getFunc() == 'H') {//HELP LOGIC HERE
+					textArea.append("TEXTFIELD HELP:\n"
+							+ "Item Description: Enter any number of words to describe your task\n"
+							+ "Priority Level: Enter any whole number to represent urgency (1 being the most urgent)\n"
+							+ "Day Due: Enter the day it is due (1-31 all valid entries)\n"
+							+ "Month Due: Enter the month the item is due (1-12 all valid entries\n"
+							+ "Status: The current status of the object in list (W for working, N for Not Started, and C for completed\n"
+							+ "BUTTON HELP:\n"
+							+ "Add/Insert: Adds an Item with the parameters given. (All fields must be filled in)\n"
+							+ "Delete/Remove: Removes an Item with the parameters given (All fields must match an item already in the list\n"
+							+ "Reorder: Cycles through the different Ordering of the list (Default is priority)\n"
+							+ "\tcycles through priority, alphabetically, and by due date, in that order\n"
+							+ "Change/Update: First type in all fields of what you want the updated Item to be, press Change/Update\n"
+							+ "\t then type in all fields which item that you wish to update, the press Change/Update again.\n"
+							+ "\t Pressing clear button will clear the stored Item\n"
+							+ "Show Current List: Show the list in the order that is currently selected\n"
+							+ "Save: Saves the list onto a text document to print out\n"
+							+ "Clear: Clears the text box as well clear the stored item in change/update\n"
+							+ "Restart list: Cleans out the current list, this is permenant");
+
 				}
 					
 					
 				else if(event.getFunc() == 'E') {//ERROR LOGIC GOES HERE
-					textArea.append("ERROR, check user guide for valid inputs");
+					textArea.append("ERROR, Please click HELP for valid inputs methods\n\n");
 				}
 				
 
