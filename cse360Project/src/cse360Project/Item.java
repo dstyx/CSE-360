@@ -19,5 +19,11 @@ public class Item {
 		this.day = day;
 		state = status;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		return(this.description.equals(((Item) obj).description) && this.priority == ((Item) obj).priority
+				&& this.month == ((Item) obj).month && this.day == ((Item) obj).day && this.state == ((Item) obj).state); 
+	}
 
 }
