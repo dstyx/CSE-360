@@ -8,7 +8,7 @@ package cse360Project;
 
 public class Item {
 	
-	int priority, month, day;
+	int priority, month, day, date;
 	String description;
 	char state; //W = working, C = complete, M = missed
 	
@@ -17,6 +17,7 @@ public class Item {
 		priority = prior;
 		month = mon;
 		this.day = day;
+		date = (month*100) + day;
 		state = status;
 	}
 	
