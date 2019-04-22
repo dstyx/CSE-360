@@ -46,17 +46,46 @@ public class Details extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
 				// TODO Auto-generated method stub
-				char func = 'I';//Insert Function
 				
-				String name = desField.getText();
-				int prio = Integer.parseInt(prioField.getText());
-				int day = Integer.parseInt(dayField.getText());
-				int month = Integer.parseInt(monthField.getText());
-				char status = statField.getText().charAt(0);
+				boolean failed = false;
+				try {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+				}
+				catch(NumberFormatException c){
+					failed = true;
+				}
 				
+				if(failed == true) {//check if number is a number
+					fireDetailEvent(new DetailEvent(this, 'E'));
+				}
+				else {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+					
+					if( 1 > day || 31 < day || 1 > month || 12 < day) {
+						fireDetailEvent(new DetailEvent(this, 'E'));
+					}
+					else {
+						fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'I'));
+					}
+				}
+				desField.setText("");
+				prioField.setText("");
+				dayField.setText("");
+				monthField.setText("");
+				statField.setText("");
 				
-				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
 				
 
 			}
@@ -68,7 +97,7 @@ public class Details extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				char func = 'D';//Delete Function
+				
 				
 				String name = desField.getText();
 				int prio = Integer.parseInt(prioField.getText());
@@ -77,7 +106,7 @@ public class Details extends JPanel {
 				char status = statField.getText().charAt(0);
 				
 				
-				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
+				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'D'));
 				
 
 			}
@@ -119,7 +148,7 @@ public class Details extends JPanel {
 			}
 			
 		});
-		JButton save = new JButton("Save your work (keeps current ordering");
+		JButton save = new JButton("Save your work (keeps current ordering)");
 		save.addActionListener(new ActionListener() {
 			
 			@Override
@@ -127,6 +156,25 @@ public class Details extends JPanel {
 				
 				fireDetailEvent(new DetailEvent(this,'S'));
 			}
+		});
+		JButton restart = new JButton("Restart List");
+		save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				fireDetailEvent(new DetailEvent(this,'T'));
+			}
+		});
+		JButton help = new JButton("Help");
+		help.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				fireDetailEvent(new DetailEvent(this, 'H'));
+			}
+			
 		});
 		JButton clear = new JButton("Clear");
 		clear.addActionListener(new ActionListener() {
@@ -219,7 +267,13 @@ public class Details extends JPanel {
 		
 		gc.gridx = 1;
 		gc.gridy = 10;
+		add(help, gc);
+		
+		gc.gridy = 11;
 		add(clear, gc);
+		
+		gc.gridy = 12;
+		add(restart, gc);
 		
 	}
 	
