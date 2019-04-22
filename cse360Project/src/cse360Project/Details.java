@@ -46,23 +46,18 @@ public class Details extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				if(desField.getText().isEmpty() || monthField.getText().isEmpty() || dayField.getText().isEmpty()) {//if any of these empty do nothing
-					
-				}
-				else if(prioField.getText().isEmpty()) {//if priority is empty then return everything else 
-					String description = desField.getText();
-					int day = Integer.parseInt(dayField.getText());
-					int month = Integer.parseInt(monthField.getText());
-					int status = Integer.parseInt(statField.getText());
-				}
-				else {//if all filled in return everything 
-					String description = desField.getText();
-					int priority = Integer.parseInt(prioField.getText());
-					int day = Integer.parseInt(dayField.getText());
-					int month = Integer.parseInt(monthField.getText());
-					int status = Integer.parseInt(statField.getText());
-					
-				}
+				char func = 'I';//Insert Function
+				
+				String name = desField.getText();
+				int prio = Integer.parseInt(prioField.getText());
+				int day = Integer.parseInt(dayField.getText());
+				int month = Integer.parseInt(monthField.getText());
+				char status = 'W';
+				
+				
+				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
+				
+
 			}
 
 		});
@@ -72,13 +67,51 @@ public class Details extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				char func = 'D';//Insert Function
 				
+				String name = desField.getText();
+				int prio = Integer.parseInt(prioField.getText());
+				int day = Integer.parseInt(dayField.getText());
+				int month = Integer.parseInt(monthField.getText());
+				char status = 'W';
+				
+				
+				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
+				
+
+			}
+
+		});
+		JButton reorder = new JButton("Reorder");
+		reorder.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				fireDetailEvent(new DetailEvent(this, 'R'));
 			}
 			
 		});
-		JButton reorder = new JButton("Reorder");
-		JButton change = new JButton("Change/Update");
+		JButton update = new JButton("Change/Update");
+		update.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				fireDetailEvent(new DetailEvent(this, 'U'));
+			}
+			
+		});
 		JButton print = new JButton("Print Report");
+		print.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				fireDetailEvent(new DetailEvent(this,'P'));
+			}
+			
+		});
 		
 		
 		
@@ -154,7 +187,7 @@ public class Details extends JPanel {
 		
 		gc.gridx = 1;
 		gc.gridy = 8;
-		add(change, gc);
+		add(update, gc);
 		
 		gc.gridx = 1;
 		gc.gridy = 9;
@@ -167,11 +200,10 @@ public class Details extends JPanel {
 		
 		for(int i = 0; i < listeners.length; i +=2) {
 			if(listeners[i] == DetailListener.class) {
-				//((DetailListener)listeners[i+1]).detailEventOccurred(event);
+				((DetailListener)listeners[i+1]).detailEventOccured(event);
 			}
 		}
 	}
-	
 	
 	public void addDetailListener(DetailListener listener) {
 		listenerList.add(DetailListener.class, listener);
