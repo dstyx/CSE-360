@@ -1,5 +1,8 @@
 package cse360Project;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -78,6 +81,13 @@ public class Func {
 		
 
 	}
+	
+	public static void saveToFile(ArrayList<Item> listIn) throws IOException {
+		
+	}
+	
+	
+	
 	
 
 	//static class to compare fields of differnt objects
