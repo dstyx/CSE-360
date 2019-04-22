@@ -14,8 +14,9 @@ public class Func {
 	
 	
 	public static ArrayList<Item> removeItem(ArrayList<Item> listIn, Item incoming){
+		int i = listIn.indexOf(incoming);
 		
-		
+		listIn.remove(i);
 		
 		return listIn;
 	}
@@ -23,9 +24,22 @@ public class Func {
 	public static ArrayList<Item> sortList(ArrayList<Item> listIn, char sorting){//SORT THE LIST BY CHAR TAHT IS CYCLED THROUGH, P = priority, A = alphabetically, D = by date
 		
 		
+		if(sorting == 'P') {//sorting by priority
+			
+		}
+		else if(sorting == 'A') {//sorting by alphabetically
+			
+		}
+		else if(sorting == 'D') {//sorting by date
+			
+		}
 		
 		
 		
+		return listIn;
+	}
+	
+	public static ArrayList<Item> updateItem(ArrayList<Item> listIn, Item incoming, Item held, boolean holding){
 		
 		return listIn;
 	}
@@ -59,5 +73,8 @@ public class Func {
 		
 
 	}
+	
+	
+
 
 }
