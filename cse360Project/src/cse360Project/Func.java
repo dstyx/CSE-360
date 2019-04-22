@@ -49,7 +49,7 @@ public class Func {
 	
 	public static String itemToString(Item item) {
 		String words = item.description + "\nPriority: " + item.priority + "\nDue Date: " + item.month + "/" + item.day +
-				"\nStatus: " + item.state;
+				"\nStatus: " + item.state + "\n";
 		
 		return words;
 		
