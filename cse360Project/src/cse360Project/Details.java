@@ -73,7 +73,7 @@ public class Details extends JPanel {
 					char status = statField.getText().charAt(0);
 					status = Character.toUpperCase(status);
 					
-					if( 1 > day || 31 < day || 1 > month || 12 < day) {
+					if( 1 > day || 31 < day || 1 > month || 12 < month) {
 						fireDetailEvent(new DetailEvent(this, 'E'));
 					}
 					else {
@@ -99,16 +99,44 @@ public class Details extends JPanel {
 				// TODO Auto-generated method stub
 				
 				
-				String name = desField.getText();
-				int prio = Integer.parseInt(prioField.getText());
-				int day = Integer.parseInt(dayField.getText());
-				int month = Integer.parseInt(monthField.getText());
-				char status = statField.getText().charAt(0);
+				boolean failed = false;
+				try {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+				}
+				catch(NumberFormatException c){
+					failed = true;
+				}
+				
+				if(failed == true) {//check if number is a number
+					fireDetailEvent(new DetailEvent(this, 'E'));
+				}
+				else {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+					
+					if( 1 > day || 31 < day || 1 > month || 12 < month) {
+						fireDetailEvent(new DetailEvent(this, 'E'));
+					}
+					else {
+						fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'D'));
+					}
+				}
+				desField.setText("");
+				prioField.setText("");
+				dayField.setText("");
+				monthField.setText("");
+				statField.setText("");
 				
 				
-				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'D'));
-				
-
 			}
 
 		});
@@ -127,14 +155,46 @@ public class Details extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				String name = desField.getText();
-				int prio = Integer.parseInt(prioField.getText());
-				int day = Integer.parseInt(dayField.getText());
-				int month = Integer.parseInt(monthField.getText());
-				char status = statField.getText().charAt(0);
+
+				
+				boolean failed = false;
+				try {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+				}
+				catch(NumberFormatException c){
+					failed = true;
+				}
+				
+				if(failed == true) {//check if number is a number
+					fireDetailEvent(new DetailEvent(this, 'E'));
+				}
+				else {
+					String name = desField.getText();
+					int prio = Integer.parseInt(prioField.getText());
+					int day = Integer.parseInt(dayField.getText());
+					int month = Integer.parseInt(monthField.getText());
+					char status = statField.getText().charAt(0);
+					status = Character.toUpperCase(status);
+					
+					if( 1 > day || 31 < day || 1 > month || 12 < month) {
+						fireDetailEvent(new DetailEvent(this, 'E'));
+					}
+					else {
+						fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'U'));
+					}
+				}
+				desField.setText("");
+				prioField.setText("");
+				dayField.setText("");
+				monthField.setText("");
+				statField.setText("");
 				
 				
-				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'U'));
 			}
 			
 		});
