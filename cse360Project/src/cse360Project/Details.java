@@ -18,8 +18,9 @@ public class Details extends JPanel {
 	
 	private EventListenerList listenerList = new EventListenerList();
 	
-	
 	public Details() {
+		
+
 		Dimension size = getPreferredSize();
 		size.width = 600;
 		setPreferredSize(size);
@@ -36,7 +37,7 @@ public class Details extends JPanel {
 		final JTextField desField = new JTextField(30);
 		final JTextField prioField = new JTextField(6);
 		final JTextField dayField = new JTextField(2);
-		final JTextField monthField = new JTextField (4);
+		final JTextField monthField = new JTextField (2);
 		final JTextField statField = new JTextField (2);
 		
 		//Buttons
@@ -52,7 +53,7 @@ public class Details extends JPanel {
 				int prio = Integer.parseInt(prioField.getText());
 				int day = Integer.parseInt(dayField.getText());
 				int month = Integer.parseInt(monthField.getText());
-				char status = 'W';
+				char status = statField.getText().charAt(0);
 				
 				
 				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
@@ -67,13 +68,13 @@ public class Details extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				char func = 'D';//Insert Function
+				char func = 'D';//Delete Function
 				
 				String name = desField.getText();
 				int prio = Integer.parseInt(prioField.getText());
 				int day = Integer.parseInt(dayField.getText());
 				int month = Integer.parseInt(monthField.getText());
-				char status = 'W';
+				char status = statField.getText().charAt(0);
 				
 				
 				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, func));
@@ -111,6 +112,14 @@ public class Details extends JPanel {
 				fireDetailEvent(new DetailEvent(this,'P'));
 			}
 			
+		});
+		JButton clear = new JButton("Clear");
+		clear.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				fireDetailEvent(new DetailEvent(this, 'C'));
+			}
 		});
 		
 		
@@ -192,6 +201,10 @@ public class Details extends JPanel {
 		gc.gridx = 1;
 		gc.gridy = 9;
 		add(print, gc);
+		
+		gc.gridx = 1;
+		gc.gridy = 10;
+		add(clear, gc);
 		
 	}
 	
