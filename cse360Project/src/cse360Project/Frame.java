@@ -33,7 +33,7 @@ public class Frame extends JFrame {
 		textArea.setEditable(false);
 		details = new Details();
 		
-		// Adding componenets to pane
+		// Adding components to pane
 		Container c = getContentPane();
 		
 		c.add(scroll, BorderLayout.CENTER);
@@ -66,7 +66,7 @@ public class Frame extends JFrame {
 						String text = Func.itemToString(event.getItem());
 						textArea.append(text);
 						list = Func.removeItem(list, event.getItem());
-						list = Func.sortList(list, sort);
+						list = Func.sortList(list, sort);//sort remaining list by whatever is the active sorting
 					}
 					else {
 						textArea.append(("The Item you entered does not exist on the list, please check for typos"));
@@ -94,8 +94,27 @@ public class Frame extends JFrame {
 				
 				
 				else if(event.getFunc() == 'U') {//CHANGE BUTTON LOGIC GOES HERE
-					textArea.append("Changing\n");
+					if(holding == false) {
+						holder = event.getItem();
+						textArea.append("Now holding : \n" + Func.itemToString(holder) +
+								"Please enter what item you wish to update/change, then press Change/Update again\n");
+						holding = true;
+					}
+					else if(!list.contains(event.getItem())) {//IF HOLDING ALREADY BUT NEW ISN'T FOUND IN LIST
+						textArea.append("Please enter an item that is on the list/check for typos in the boxes\n");
+					}
+					else if(list.contains(event.getItem())) {//IF HOLDING ALREADY AND FOUND CORRECT ITEM TO REPLACE 
+						
+						Func.Add(list, holder);
+						Func.removeItem(list, event.getItem());
+						
+						textArea.append("Item: \n" + Func.itemToString(event.getItem()) + "Has Been replaced by: "
+								+ Func.itemToString(holder));
+						
+						holding = false;
+					}
 				}
+
 				
 				
 				else if(event.getFunc() == 'P') {//PRINT BUTTON LOGIC GOES HERE
