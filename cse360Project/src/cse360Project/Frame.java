@@ -14,7 +14,7 @@ import javax.swing.JTextArea;
 public class Frame extends JFrame {
 	
 	private Details details;
-	private char sort = 'P';
+	private char sort = 'A';
 	private Item holder;
 	private Boolean holding = false;
 	public ArrayList<Item> list = new ArrayList<Item>();
@@ -50,7 +50,7 @@ public class Frame extends JFrame {
 					textArea.append("Added to List\n");
 					String text = Func.itemToString(event.getItem());
 					textArea.append(text);
-					Func.Add(list, event.getItem());
+					list = Func.Add(list, event.getItem());
 					list = Func.sortList(list, sort);
 				}
 				
@@ -118,6 +118,7 @@ public class Frame extends JFrame {
 				
 				
 				else if(event.getFunc() == 'P') {//PRINT BUTTON LOGIC GOES HERE
+					System.out.println(Func.itemToString(list.get(0)));
 					String text = Func.listToString(list);
 					textArea.append("Printing\n");
 					textArea.append(text);
@@ -131,7 +132,7 @@ public class Frame extends JFrame {
 				}
 				
 				
-				else if(event.getFunc() == 'S') {
+				else if(event.getFunc() == 'S') {//Save LOGIC HERE
 					
 				}
 					
