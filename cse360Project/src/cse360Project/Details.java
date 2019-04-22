@@ -73,7 +73,7 @@ public class Details extends JPanel {
 					char status = statField.getText().charAt(0);
 					status = Character.toUpperCase(status);
 					
-					if( 1 > day || 31 < day || 1 > month || 12 < month) {
+					if( 1 > day || 31 < day || 1 > month || 12 < month || status != 'W' || status != 'C' || status != 'N') {
 						fireDetailEvent(new DetailEvent(this, 'E'));
 					}
 					else {
@@ -123,7 +123,7 @@ public class Details extends JPanel {
 					char status = statField.getText().charAt(0);
 					status = Character.toUpperCase(status);
 					
-					if( 1 > day || 31 < day || 1 > month || 12 < month) {
+					if( 1 > day || 31 < day || 1 > month || 12 < month || status != 'W' || status != 'C' || status != 'N') {
 						fireDetailEvent(new DetailEvent(this, 'E'));
 					}
 					else {
@@ -181,7 +181,7 @@ public class Details extends JPanel {
 					char status = statField.getText().charAt(0);
 					status = Character.toUpperCase(status);
 					
-					if( 1 > day || 31 < day || 1 > month || 12 < month) {
+					if( 1 > day || 31 < day || 1 > month || 12 < month || status != 'W' || status != 'C' || status != 'N') {
 						fireDetailEvent(new DetailEvent(this, 'E'));
 					}
 					else {
