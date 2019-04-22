@@ -12,12 +12,12 @@ public class Item {
 	String description;
 	char state; //W = working, C = complete, M = missed
 	
-	public Item(String des, int mon, int day, int prior) {
+	public Item(String des, int mon, int day, int prior, char status) {
 		description = des;
 		priority = prior;
 		month = mon;
 		this.day = day;
-		state = 'W';
+		state = status;
 	}
 
 }
