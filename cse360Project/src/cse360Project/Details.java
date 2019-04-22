@@ -98,8 +98,14 @@ public class Details extends JPanel {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				fireDetailEvent(new DetailEvent(this, 'U'));
+				String name = desField.getText();
+				int prio = Integer.parseInt(prioField.getText());
+				int day = Integer.parseInt(dayField.getText());
+				int month = Integer.parseInt(monthField.getText());
+				char status = statField.getText().charAt(0);
+				
+				
+				fireDetailEvent(new DetailEvent(this, name, prio, month, day, status, 'U'));
 			}
 			
 		});
