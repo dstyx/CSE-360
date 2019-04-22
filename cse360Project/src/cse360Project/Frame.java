@@ -69,7 +69,7 @@ public class Frame extends JFrame {
 						list = Func.sortList(list, sort);//sort remaining list by whatever is the active sorting
 					}
 					else {
-						textArea.append(("The Item you entered does not exist on the list, please check for typos"));
+						textArea.append(("The Item you entered does not exist on the list, please check for typos\n"));
 					}
 
 				}
@@ -151,6 +151,11 @@ public class Frame extends JFrame {
 							+ "Clear: Clears the text box as well clear the stored item in change/update\n"
 							+ "Restart list: Cleans out the current list, this is permenant");
 
+				}
+				
+				else if(event.getFunc() == 'T') {
+					textArea.append("LIST CLEARED");
+					list.clear();
 				}
 					
 					
