@@ -16,7 +16,6 @@ public class Main {
 
 	public static void main(String[] args) {
 		
-		ArrayList<Item> toDo = new ArrayList<Item>();
 		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
