@@ -109,7 +109,7 @@ public class Details extends JPanel {
 			}
 			
 		});
-		JButton print = new JButton("Print Report");
+		JButton print = new JButton("Show Current List");
 		print.addActionListener(new ActionListener() {
 
 			@Override
@@ -118,6 +118,15 @@ public class Details extends JPanel {
 				fireDetailEvent(new DetailEvent(this,'P'));
 			}
 			
+		});
+		JButton save = new JButton("Save your work (keeps current ordering");
+		save.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				fireDetailEvent(new DetailEvent(this,'S'));
+			}
 		});
 		JButton clear = new JButton("Clear");
 		clear.addActionListener(new ActionListener() {
