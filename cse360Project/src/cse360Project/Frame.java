@@ -118,7 +118,6 @@ public class Frame extends JFrame {
 				
 				
 				else if(event.getFunc() == 'P') {//PRINT BUTTON LOGIC GOES HERE
-					System.out.println(Func.itemToString(list.get(0)));
 					String text = Func.listToString(list);
 					textArea.append("Printing\n");
 					textArea.append(text);
