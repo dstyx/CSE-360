@@ -1,6 +1,8 @@
 package cse360Project;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class Func {
 	
@@ -22,16 +24,19 @@ public class Func {
 	}
 	
 	public static ArrayList<Item> sortList(ArrayList<Item> listIn, char sorting){//SORT THE LIST BY CHAR TAHT IS CYCLED THROUGH, P = priority, A = alphabetically, D = by date
-		
+		ArrayList<Item> sorted = new ArrayList<Item>();
 		
 		if(sorting == 'P') {//sorting by priority
-			
+			Collections.sort(listIn, new PriorityComparator());
 		}
 		else if(sorting == 'A') {//sorting by alphabetically
-			
+			Collections.sort(listIn, new AlphabetComparator());
 		}
 		else if(sorting == 'D') {//sorting by date
-			
+			Collections.sort(listIn, new DateComparator());
+		}
+		else {//error testing
+			System.out.println("ERROR: NO CHAR GIVEN");
 		}
 		
 		
@@ -66,7 +71,7 @@ public class Func {
 			for(int i = 0; i < listIn.size(); i++) {
 				words += itemToString(listIn.get(i));
 			}
-			words += "\n";
+			words += "\n\n";
 		}
 		
 		return words;
@@ -74,7 +79,42 @@ public class Func {
 
 	}
 	
+
+	//static class to compare fields of differnt objects
+	static class AlphabetComparator implements Comparator<Item>{
+
+		@Override
+		public int compare(Item i1, Item i2) {
+			// TODO Auto-generated method stub
+			return i1.description.compareTo(i2.description);
+		}
+		
+	}
 	
+	static class PriorityComparator implements Comparator<Item>{
+
+		@Override
+		public int compare(Item i1, Item i2) {
+			// TODO Auto-generated method stub
+			return i1.priority - i2.priority;
+		}
+		
+	}
+	
+	static class DateComparator implements Comparator<Item>{
+
+		@Override
+		public int compare(Item o1, Item o2) {
+			// TODO Auto-generated method stub
+			
+			
+			return o2.date-o1.date;
+		}
+		
+		
+	}
 
 
 }
+
+
