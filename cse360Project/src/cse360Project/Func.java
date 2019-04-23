@@ -158,10 +158,8 @@ public class Func {
 
 		@Override
 		public int compare(Item o1, Item o2) {
-			// TODO Auto-generated method stub
-			
-			
-			return o2.date-o1.date;
+			// TODO Auto-generated method stub			
+			return o1.date-o2.date;
 		}
 		
 		
