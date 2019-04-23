@@ -17,7 +17,7 @@ public class Item {
 		priority = prior;
 		month = mon;
 		this.day = day;
-		date = (month*100) + day;
+		date = (month*100) + this.day;
 		state = status;
 	}
 	

@@ -15,7 +15,7 @@ import javax.swing.JTextArea;
 public class Frame extends JFrame {
 	
 	private Details details;
-	private char sort = 'A';
+	private char sort = 'P';
 	private Item holder;
 	private int count = 0;
 	private Boolean holding = false;
@@ -61,11 +61,12 @@ public class Frame extends JFrame {
 						textArea.append("Item is already on the list, please enter only unique descriptions\n");
 					}
 					else {
-						textArea.append("Added to List\n");
+						textArea.append("Added to List\n\n");
 						String text = Func.itemToString(event.getItem());
 						textArea.append(text);
 						list = Func.Add(list, event.getItem());
 						list = Func.sortList(list, sort);
+						textArea.append("\n");
 					}
 
 				}
