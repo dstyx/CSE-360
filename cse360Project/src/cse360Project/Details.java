@@ -218,7 +218,7 @@ public class Details extends JPanel {
 			}
 		});
 		JButton restart = new JButton("Restart List");
-		save.addActionListener(new ActionListener() {
+		restart.addActionListener(new ActionListener() {
 			
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
