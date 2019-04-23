@@ -170,7 +170,7 @@ public class Frame extends JFrame {
 				}
 				
 				else if(event.getFunc() == 'T') {
-					textArea.append("LIST CLEARED");
+					textArea.append("LIST CLEARED\n");
 					list.clear();
 				}
 					
