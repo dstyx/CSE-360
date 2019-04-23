@@ -26,5 +26,9 @@ public class Item {
 		return(this.description.equals(((Item) obj).description) && this.priority == ((Item) obj).priority
 				&& this.month == ((Item) obj).month && this.day == ((Item) obj).day && this.state == ((Item) obj).state); 
 	}
+	
+	public int getPriority() {
+		return priority;
+	}
 
 }
