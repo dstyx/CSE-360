@@ -121,9 +121,9 @@ public class Frame extends JFrame {
 						textArea.append("Please enter an item that is on the list/check for typos in the boxes\n");
 					}
 					else if(list.contains(event.getItem())) {//IF HOLDING ALREADY AND FOUND CORRECT ITEM TO REPLACE 
-						
-						Func.Add(list, holder);
 						Func.removeItem(list, event.getItem());
+						Func.Add(list, holder);
+
 						
 						textArea.append("Item: \n" + Func.itemToString(event.getItem()) + "Has Been replaced by: \n"
 								+ Func.itemToString(holder));
