@@ -1,3 +1,5 @@
+
+
 package cse360Project;
 
 import java.io.BufferedWriter;
@@ -9,6 +11,11 @@ import java.util.Comparator;
 
 public class Func {
 	
+	
+	
+	/*
+	 * Adds an item to the end of the List
+	 */
 	public static ArrayList<Item> Add(ArrayList<Item> listIn, Item incoming) {//List in is old list to be updated, income is incoming item
 		
 		listIn.add(incoming);
@@ -18,6 +25,10 @@ public class Func {
 	}
 	
 	
+	
+	/*
+	 * Removes Item in list if already been checked if item was in list
+	 */
 	public static ArrayList<Item> removeItem(ArrayList<Item> listIn, Item incoming){
 		int i = listIn.indexOf(incoming);
 		
@@ -26,6 +37,10 @@ public class Func {
 		return listIn;
 	}
 	
+	
+	/*
+	 * Method to reorganize the list depending on what sorting is inputted
+	 */
 	public static ArrayList<Item> sortList(ArrayList<Item> listIn, char sorting){//SORT THE LIST BY CHAR TAHT IS CYCLED THROUGH, P = priority, A = alphabetically, D = by date
 		ArrayList<Item> sorted = new ArrayList<Item>();
 		
@@ -47,13 +62,10 @@ public class Func {
 		return listIn;
 	}
 	
-	public static ArrayList<Item> updateItem(ArrayList<Item> listIn, Item incoming, Item held, boolean holding){
-		
-		return listIn;
-	}
 	
-	
-	
+	/*
+	 * A method to turn an Item into a readable string with all elements being visable upon calling
+	 */
 	
 	public static String itemToString(Item item) {
 		String words = item.description + "\nPriority: " + item.priority + "\nDue Date: " + item.month + "/" + item.day +
@@ -63,6 +75,10 @@ public class Func {
 		
 		
 	}
+	
+	/*
+	 * A method to turn an array list into a string for use, calls upon the itemToString method
+	 */
 	
 	public static String listToString(ArrayList<Item> listIn) {
 		String words = "";
@@ -82,6 +98,11 @@ public class Func {
 
 	}
 	
+	
+	/*
+	 * Function designed to save a list to a txt file for later use
+	 *
+	 */
 	public static void saveToFile(ArrayList<Item> listIn) throws IOException {
 		
 	}
@@ -91,6 +112,10 @@ public class Func {
 	
 
 	//static class to compare fields of differnt objects
+	
+	/*
+	 * This class is to allow the comparing of two different item's names
+	 */
 	static class AlphabetComparator implements Comparator<Item>{
 
 		@Override
@@ -101,6 +126,10 @@ public class Func {
 		
 	}
 	
+	
+	/*
+	 * This class is to allow the comparing of two different item's priorities
+	 */
 	static class PriorityComparator implements Comparator<Item>{
 
 		@Override
@@ -111,6 +140,10 @@ public class Func {
 		
 	}
 	
+	
+	/*
+	 * This class is to allow the comparing of two different item's Date's
+	 */
 	static class DateComparator implements Comparator<Item>{
 
 		@Override
