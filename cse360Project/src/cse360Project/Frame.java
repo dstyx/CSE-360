@@ -131,7 +131,6 @@ public class Frame extends JFrame {
 						
 						holding = false;
 					}
-					list = Func.sortList(list, sort);
 				}
 
 				
