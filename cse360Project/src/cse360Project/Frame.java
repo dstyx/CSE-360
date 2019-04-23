@@ -131,6 +131,7 @@ public class Frame extends JFrame {
 						
 						holding = false;
 					}
+					list = Func.sortList(list, sort);
 				}
 
 				
@@ -139,12 +140,14 @@ public class Frame extends JFrame {
 					String text = Func.listToString(list);
 					textArea.append("Printing\n");
 					textArea.append(text);
+					list = Func.sortList(list, sort);
 				}
 				
 				
 				else if(event.getFunc() == 'C') {//CLEAR BUTTON LOGIC
 					textArea.selectAll();
 					textArea.replaceSelection("");
+					list = Func.sortList(list, sort);
 					
 				}
 				
@@ -169,6 +172,7 @@ public class Frame extends JFrame {
 							+ "Clear: Clears the text box as well clear the stored item in change/update\n"
 							+ "Restart list: Cleans out the current list, this is permenant\n\n");
 
+					list = Func.sortList(list, sort);
 				}
 				
 				else if(event.getFunc() == 'T') {
