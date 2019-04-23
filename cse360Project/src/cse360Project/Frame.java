@@ -17,6 +17,7 @@ public class Frame extends JFrame {
 	private Details details;
 	private char sort = 'A';
 	private Item holder;
+	private int count = 0;
 	private Boolean holding = false;
 	public ArrayList<Item> list = new ArrayList<Item>();
 	
@@ -177,6 +178,14 @@ public class Frame extends JFrame {
 					
 				else if(event.getFunc() == 'E') {//ERROR LOGIC GOES HERE
 					textArea.append("ERROR, Please click HELP for valid inputs methods\n\n");
+					if(holding)
+						count++;
+					if(count ==2) {
+						holding = false;
+						count = 0;
+					}
+
+					
 				}
 				
 
