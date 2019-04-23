@@ -179,11 +179,8 @@ public class Frame extends JFrame {
 				else if(event.getFunc() == 'E') {//ERROR LOGIC GOES HERE
 					textArea.append("ERROR, Please click HELP for valid inputs methods\n\n");
 					if(holding)
-						count++;
-					if(count ==2) {
 						holding = false;
-						count = 0;
-					}
+
 
 					
 				}
