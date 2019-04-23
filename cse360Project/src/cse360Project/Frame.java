@@ -104,6 +104,7 @@ public class Frame extends JFrame {
 						sort = 'P';
 						textArea.append("Now sorting by priority\n");
 					}
+					list = Func.sortList(list, sort);
 					textArea.append("Reorganizing List\n" );
 				}
 				
