@@ -18,6 +18,16 @@ public class Func {
 	 */
 	public static ArrayList<Item> Add(ArrayList<Item> listIn, Item incoming) {//List in is old list to be updated, income is incoming item
 		
+		listIn = sortList(listIn, 'P');//sort list as a priority to then increase size if need be
+		int j = incoming.priority;
+		
+		for(int i = 0; i < listIn.size(); i++) {
+			if( j == listIn.get(i).priority) {
+				listIn.get(i).priority++;
+				j++;
+			}
+		}
+		
 		listIn.add(incoming);
 		
 		
