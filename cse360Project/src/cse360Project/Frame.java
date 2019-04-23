@@ -1,3 +1,5 @@
+
+
 package cse360Project;
 
 import java.awt.BorderLayout;
@@ -44,14 +46,27 @@ public class Frame extends JFrame {
 		details.addDetailListener(new DetailListener() {
 			public void detailEventOccured(DetailEvent event) {
 				
-				//Func.Add(list, event.getItem() );
 				
 				if(event.getFunc() == 'I') {//INSERT BUTTON LOGIC GOES HERE
-					textArea.append("Added to List\n");
-					String text = Func.itemToString(event.getItem());
-					textArea.append(text);
-					list = Func.Add(list, event.getItem());
-					list = Func.sortList(list, sort);
+					
+					boolean h = false;
+					
+					for(int i = 0; i < list.size(); i++) {
+						if(event.getItem().description.compareTo(list.get(i).description) == 0 )
+							h = true;
+					}
+					
+					if(h) {
+						textArea.append("Item is already on the list, please enter only unique descriptions\n");
+					}
+					else {
+						textArea.append("Added to List\n");
+						String text = Func.itemToString(event.getItem());
+						textArea.append(text);
+						list = Func.Add(list, event.getItem());
+						list = Func.sortList(list, sort);
+					}
+
 				}
 				
 				
@@ -108,7 +123,7 @@ public class Frame extends JFrame {
 						Func.Add(list, holder);
 						Func.removeItem(list, event.getItem());
 						
-						textArea.append("Item: \n" + Func.itemToString(event.getItem()) + "Has Been replaced by: "
+						textArea.append("Item: \n" + Func.itemToString(event.getItem()) + "Has Been replaced by: \n"
 								+ Func.itemToString(holder));
 						
 						holding = false;
