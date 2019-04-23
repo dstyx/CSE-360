@@ -149,7 +149,7 @@ public class Frame extends JFrame {
 							+ "Show Current List: Show the list in the order that is currently selected\n"
 							+ "Save: Saves the list onto a text document to print out\n"
 							+ "Clear: Clears the text box as well clear the stored item in change/update\n"
-							+ "Restart list: Cleans out the current list, this is permenant");
+							+ "Restart list: Cleans out the current list, this is permenant\n\n");
 
 				}
 				
